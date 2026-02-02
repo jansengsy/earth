@@ -1,0 +1,7 @@
+# Cloudflare Workers configuration for global-wind-map
+name = "global-wind-map"
+compatibility_date = "2024-01-01"
+
+# Serve static assets from the public directory
+[assets]
+directory = "./public"
