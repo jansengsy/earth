@@ -66,7 +66,7 @@
         if (0 <= amount && amount < 1) {
           var i = Math.ceil(amount * total);
           var bar = COMPLETED.substr(0, i) + REMAINING.substr(0, total - i);
-          return p.classed("invisible", false).text(bar);
+          return p.classed("invisible", true).text(bar);
         }
         return p.classed("invisible", true).text(""); // progress complete
       },
