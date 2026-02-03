@@ -1317,17 +1317,22 @@
     });
 
     // When browser window is resized, rebuild globe using the new view size.
-    d3.select(window).on(
-      "resize",
-      _.debounce(function () {
-        view = µ.view();
-        // Update canvas dimensions to match new view size
-        d3.selectAll(".fill-screen")
-          .attr("width", view.width)
-          .attr("height", view.height);
-        globeAgent.submit(buildGlobe, configuration.get("projection"));
-      }, 500),
-    );
+    // Immediately resize canvases and stop animation; debounce the expensive globe rebuild.
+    var rebuildGlobeAfterResize = _.debounce(function () {
+      globeAgent.submit(buildGlobe, configuration.get("projection"));
+    }, 10);
+
+    d3.select(window).on("resize", function () {
+      view = µ.view();
+      // Immediately update canvas/svg dimensions to prevent black areas
+      d3.selectAll(".fill-screen")
+        .attr("width", view.width)
+        .attr("height", view.height);
+      // Stop animation immediately during resize
+      stopCurrentAnimation(true);
+      // Rebuild globe after resize settles
+      rebuildGlobeAfterResize();
+    });
   }
 
   function start() {
