@@ -624,8 +624,8 @@
       particleCount *= PARTICLE_REDUCTION;
     }
     var fadeFillStyle = µ.isFF()
-      ? "rgba(0, 0, 0, 0.92)"
-      : "rgba(0, 0, 0, 0.92)"; // FF Mac alpha behaves oddly
+      ? "rgba(0, 0, 0, 0.88)"
+      : "rgba(0, 0, 0, 0.88)"; // FF Mac alpha behaves oddly
 
     log.debug("particle count: " + particleCount);
     var particles = [];
