@@ -13,7 +13,7 @@ var µ = (function () {
   var H = 0.000036; // 0.0000360°φ ~= 4m
   var DEFAULT_CONFIG = "current/wind/surface/level/orthographic";
   var TOPOLOGY = isMobile()
-    ? "/data/earth-topo-mobile.json?v2"
+    ? "/data/earth-topo.json?v2"
     : "/data/earth-topo.json?v2";
 
   /**

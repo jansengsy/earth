@@ -240,19 +240,19 @@
       var o = topo.objects;
       var coastLo = topojson.feature(
         topo,
-        µ.isMobile() ? o.coastline_tiny : o.coastline_110m,
+        µ.isMobile() ? o.coastline_110m : o.coastline_110m,
       );
       var coastHi = topojson.feature(
         topo,
-        µ.isMobile() ? o.coastline_110m : o.coastline_50m,
+        µ.isMobile() ? o.coastline_50m : o.coastline_50m,
       );
       var lakesLo = topojson.feature(
         topo,
-        µ.isMobile() ? o.lakes_tiny : o.lakes_110m,
+        µ.isMobile() ? o.lakes_110m : o.lakes_110m,
       );
       var lakesHi = topojson.feature(
         topo,
-        µ.isMobile() ? o.lakes_110m : o.lakes_50m,
+        µ.isMobile() ? o.lakes_50m : o.lakes_50m,
       );
       log.timeEnd("building meshes");
       return {
@@ -389,7 +389,10 @@
         rendererAgent.trigger("start");
       },
       move: function () {
-        doDraw_throttled();
+        coastline.datum(mesh.coastHi);
+        lakes.datum(mesh.lakesHi);
+        d3.selectAll("path").attr("d", path);
+        rendererAgent.trigger("render");
       },
       moveEnd: function () {
         coastline.datum(mesh.coastHi);
