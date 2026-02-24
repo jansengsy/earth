@@ -186,11 +186,12 @@ var products = (function () {
           scale: {
             bounds: [0, 60],
             gradient: µ.segmentedColorScale([
-              [0, [6, 42, 54]], // calm - 0 mph
-              [3, [20, 62, 81]], // 6 mph
-              [9, [17, 115, 118]], // 20 mph
+              [0, [3, 22, 28]], // calm - 0 mph
+              [3, [6, 42, 54]], // 6 mph
+              [6, [20, 62, 81]],
+              [14, [30, 133, 145]], // 20 mph
               [15, [27, 134, 138]], // 33 mph
-              [20, [249, 98, 177]], // 44 mph
+              [32, [249, 98, 177]], // 44 mph
             ]),
           },
           particles: { velocityScale: 1 / 60000, maxIntensity: 17 },
